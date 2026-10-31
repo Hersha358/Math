@@ -68,14 +68,14 @@ int main() {
 
             if (userChoice == 1)
             {
-                printf("\nEnter total number of objects(n):");
+                printf("Enter total number of objects(n):");
                 scanf("%d",&n);
-                printf("\nEnter number of objects to be arranged(r):");
+                printf("Enter number of objects to be arranged(r):");
                 scanf("%d",&r);
 
                 if (r > n || r <= 0 || n <= 0)
                 {
-                    printf("\nInvalid syntax!");
+                    printf("Invalid syntax!");
                 }else {
 
                     fnProduct = n;
@@ -102,9 +102,9 @@ int main() {
                     
                 }
             }else if (userChoice == 2){
-                printf("\nEnter the total number of available objects(n):");
+                printf("Enter the total number of available objects(n):");
                 scanf("%d",&n);
-                printf("\nEnter the number of positions to fill(r):");
+                printf("Enter the number of positions to fill(r):");
                 scanf("%d",&r);
 
                 if (n <= 0 || r <= 0)
@@ -116,11 +116,12 @@ int main() {
                     {
                         pResult *= n;
                     }
+                    printf("\nResult:%d",pResult);
                 }
-                printf("\nResult:%d",pResult);
+                
 
             }else if (userChoice == 3){
-                printf("\nEnter total number of objects(n):");
+                printf("Enter total number of objects(n):");
                 scanf("%d",&n);
 
 
@@ -132,10 +133,10 @@ int main() {
 
                 do
                 {
-                    printf("\nEnter number of repeats:");
+                    printf("Enter number of repeats:");
                     scanf("%d",&identicalObjects[r]);
                     r += 1;
-                    printf("\ncontinue?(y/n):");
+                    printf("continue?(y/n):");
                     scanf(" %c",&option);
                     
                 } while (option != 'n' && option != 'N');
@@ -154,7 +155,7 @@ int main() {
 
                 if (SOAIO != n)
                 {
-                    printf("\nInvalid syntax identical objects must be equal to n (a + b + c.. = n)");
+                    printf("Invalid syntax identical objects must be equal to n (a + b + c.. = n)");
                 }else{
 
                     frProduct = identicalObjects[0];
@@ -169,8 +170,6 @@ int main() {
             }else if (userChoice == 4){}else{
                 printf("Invalid input!");
             }
-            
-            
         }
         
         if (choice == 5)
