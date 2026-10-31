@@ -11,7 +11,7 @@ int main() {
 
         printf(">>>>>>> Math Menu <<<<<<<\n\n");
         printf("1) Mean, Median, Mode\n");
-        printf("2) Nalimot ko unsa ni\n");
+        printf("2) Fibonacci Sequence\n");
         printf("3) Factorial\n");
         printf("4) Permutation\n");
         printf("5) Exit\n\n");
@@ -29,7 +29,19 @@ int main() {
         // PROBLEM 2
         if (choice == 2)
         {
-            printf(">> PROBLEM 2 <<");
+            printf(">> Fibonacci Sequence <<");
+            int n, m, l, nextTerm = 0, counter = 0;
+            printf("\nEnter the number of terms: ");
+            scanf("%d", &m);
+            printf("\nEnter the number: ");
+            scanf("%d", &n);
+
+            while (counter < m) {
+                nextTerm = nextTerm + n;
+                n = nextTerm - n;
+                counter++;
+                printf("%d ", nextTerm);
+            }
             
         }
         
