@@ -36,8 +36,18 @@ int main() {
         // FACTORIAL
         if (choice == 3)
         {
-            printf(">> FACTORIAL <<");
-                      
+            int n, i;
+            long fact = 1;
+            
+            printf("Welcome to the Factorial Calculator!\n");
+            printf("Enter a number:");
+            scanf("%d", &n);
+
+            for(i = 1; i <= n; i++) {
+                fact = fact * i;
+            }
+            
+            printf("Factorial of %d is %ld\n", n, fact);          
         }
         
         // PERMUTATION
