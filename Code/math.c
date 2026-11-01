@@ -1,23 +1,59 @@
 #include <stdio.h>
+#include <conio.h>
 #include <stdlib.h>
 
-int main() {
+void arrowhere(int option, int current)
+{
+    printf(option == current ? "-> " : "   ");
+}
+int showmenu(void)
+{
+    int key = 0;
+    int position = 1;
+
+    while(key != 13) 
+{
+    system("cls");
+    printf("\n\n\n");
+
+    printf("======== Main Menu ========\n\n");
+    arrowhere(1, position); printf("Central Tendencies\n");
+    arrowhere(2, position); printf("Fibonacci Sequence\n");
+    arrowhere(3, position); printf("Factorial\n");
+    arrowhere(4, position); printf("Permutations\n");
+    arrowhere(5, position); printf("Exit\n\n");
+
+    key = getch();
+
+    if (key == 224 || key == 0) { 
+        switch (getch()) { 
+            case 72: 
+                position--;
+                if (position < 1) {
+                    position = 1;
+                }
+                break;
+            case 80: 
+                position++;
+                if (position > 5) {
+                    position = 5;
+                }
+                break;
+        }
+    }
+}
+    return position;
+}
+int main()
+{
     char tryAgain;
+
     do
     {
+
+        int choice = showmenu();
+
         system("cls");
-
-        int choice, i, j;
-
-        printf(">>>>>>> Math Menu <<<<<<<\n\n");
-        printf("1) Mean, Median, Mode\n");
-        printf("2) Nalimot ko unsa ni\n");
-        printf("3) Factorial\n");
-        printf("4) Permutation\n");
-        printf("5) Exit\n\n");
-
-        printf("Choose a number: ");
-        scanf("%d", &choice);
         
         // MEAN, MEDIAN, MODE
         if (choice == 1) 
