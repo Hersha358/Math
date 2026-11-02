@@ -1,12 +1,33 @@
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 void arrowhere(int option, int current)
 {
-
-    printf(option == current ? "-> " : "   ");
+    if (option == current)
+    {
+        printf("-> ");
+    }else{
+        printf("   ");
+    }
 }
+
+void highlight(int opt, int curr)
+{
+    HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+    if (opt == curr)
+    {
+        SetConsoleTextAttribute(Console,
+        BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_INTENSITY);
+    }else
+    {
+        SetConsoleTextAttribute(Console,7);
+    }
+}
+
+
 int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],char opt5[])
 {
     int key = 0;
@@ -48,12 +69,12 @@ int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],ch
     if (opt1 != "Option 1" && opt2 != "Option 2" && opt3 != "Option 3" && opt4 != "Option 4" && opt5 != "Option 5")
     {
         printf("======== %s ========\n\n",menuTitle);
-        arrowhere(1, position); printf("%s\n",opt1);
-        arrowhere(2, position); printf("%s\n",opt2);
-        arrowhere(3, position); printf("%s\n",opt3);
-        arrowhere(4, position); printf("%s\n",opt4);
-        arrowhere(5, position); printf("%s\n\n",opt5);
-
+        highlight(1,position); arrowhere(1, position); printf("%s\n",opt1);
+        highlight(2,position); arrowhere(2, position);  printf("%s\n",opt2);
+        highlight(3,position); arrowhere(3, position);  printf("%s\n",opt3);
+        highlight(4,position); arrowhere(4, position);  printf("%s\n",opt4);
+        highlight(5,position); arrowhere(5, position);  printf("%s\n\n",opt5);
+        highlight(6,position);
         key = getch();
 
     if (key == 224 || key == 0) { 
@@ -74,10 +95,11 @@ int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],ch
     }
     }else if (opt1 != "Option 1" && opt2 != "Option 2" && opt3 != "Option 3" && opt4 != "Option 4" && opt5 == "Option 5"){
         printf("======== %s ========\n\n",menuTitle);
-        arrowhere(1, position); printf("%s\n",opt1);
-        arrowhere(2, position); printf("%s\n",opt2);
-        arrowhere(3, position); printf("%s\n",opt3);
-        arrowhere(4, position); printf("%s\n\n",opt4);
+        highlight(1,position); arrowhere(1, position); printf("%s\n",opt1);
+        highlight(2,position); arrowhere(2, position);  printf("%s\n",opt2);
+        highlight(3,position); arrowhere(3, position);  printf("%s\n",opt3);
+        highlight(4,position); arrowhere(4, position);  printf("%s\n\n",opt4);
+        highlight(6,position);
         key = getch();
 
         if (key == 224 || key == 0) { 
@@ -236,6 +258,7 @@ int main()
             printf("Factorial of %d is %ld\n", n, fact);          
         } else if (choice == 4)
         {
+            system("cls");
             while (1)
             {
                 int userChoice = showmenu(
@@ -245,9 +268,6 @@ int main()
                 "Permutation with identical objects (n!/a!b!c!..)",
                 "Exit",
                 "");
-
-                system("cls");
-
                 int n = 0;
                 int r = 0;
                 int identicalObjects[50];
@@ -291,7 +311,8 @@ int main()
                         }
                 
                         printf("\nResult:%d, n = %d, r = %d",pResult,fnProduct,frProduct);
-                        
+                        printf("\nPress any key to continue...");
+                        getch();
                     }
                 }else if (userChoice == 2){
                     printf("Enter the total number of available objects(n):");
@@ -309,6 +330,8 @@ int main()
                             pResult *= n;
                         }
                         printf("\nResult:%d",pResult);
+                        printf("\nPress any key to continue...");
+                        getch();
                     }
                     
 
@@ -357,6 +380,8 @@ int main()
                         }
                         pResult = fnProduct/frProduct;
                         printf("\nResult:%d",pResult);
+                        printf("\nPress any key to continue...");
+                        getch();
                     }
                     
                 }else if (userChoice == 4)
@@ -371,7 +396,7 @@ int main()
         
         // TRY AGAIN QUESTION
 
-        printf("\n\nDo you want to return to the MENU? (Y/N): ");
+        printf("Do you want to return to the MENU? (Y/N): ");
         scanf(" %c", &tryAgain);
         printf("\n");
 
