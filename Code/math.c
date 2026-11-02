@@ -30,17 +30,18 @@ int main() {
         if (choice == 2)
         {
             printf(">> Fibonacci Sequence <<");
-            int n, m, l, nextTerm = 0, counter = 0;
+            int l, counter = 0;
+            unsigned long long int nextTerm = 0, n, m;
             printf("\nEnter the number of terms: ");
-            scanf("%d", &m);
-            printf("\nEnter the number: ");
-            scanf("%d", &n);
+            scanf("%llu", &m);
+            printf("\nEnter the first term: ");
+            scanf("%llu", &n);
 
             while (counter < m) {
                 nextTerm = nextTerm + n;
                 n = nextTerm - n;
                 counter++;
-                printf("%d ", nextTerm);
+                printf("%llu ", nextTerm);
             }
             
         }
