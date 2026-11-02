@@ -40,7 +40,7 @@ int main() {
             long fact = 1;
             
             printf("Welcome to the Factorial Calculator!\n");
-            printf("Enter a number:");
+            printf("Enter the first term:");
             scanf("%d", &n);
 
             for(i = 1; i <= n; i++) {
