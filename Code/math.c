@@ -234,7 +234,7 @@ int main()
             int n, m, l, nextTerm = 0, counter = 0;
             printf("\nEnter the number of terms: ");
             scanf("%d", &m);
-            printf("\nEnter the number: ");
+            printf("\nEnter the first term: ");
             scanf("%d", &n);
 
             while (counter < m) {
