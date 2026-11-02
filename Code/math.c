@@ -25,6 +25,7 @@ void highlight(int opt, int curr)
     {
         SetConsoleTextAttribute(Console,7);
     }
+
 }
 
 
@@ -139,8 +140,8 @@ int main()
             printf("\n>>> MEASURES OF CENTRAL TENDENCY <<<\n");
             printf("       (Mean, Median, Mode)    \n\n");
 
-            int n, sum, i, temp, median, mode, max_count, count;
-            float mean;
+            int n, sum = 0, i = 0, temp = 0, median, mode = 0, max_count = 0, count = 0;
+            float mean = 0.0f;
             int numbers[50];
 
             do
@@ -167,8 +168,8 @@ int main()
             {
                 sum += numbers[i];
             }
-
-            mean = (float)sum / n;
+            
+            mean = (float) sum / n;
 
             printf("\n\n------- RESULTS -------\n");
             printf("\n> Total = %d\n", sum);
@@ -220,7 +221,7 @@ int main()
 
             if (max_count > 1)
             {
-                printf("\n> Mode (Most Common): %d\n", mode, max_count);
+                printf("\n> Mode (Most Common): %d\n", mode);
             }
             else
             {
@@ -396,12 +397,14 @@ int main()
         
         // TRY AGAIN QUESTION
 
-        printf("Do you want to return to the MENU? (Y/N): ");
+        printf("\n\nDo you want to return to the MENU? (Y/N): ");
         scanf(" %c", &tryAgain);
         printf("\n");
 
     } while (tryAgain == 'y' || tryAgain == 'Y');
 
     printf(">> Thank you for using our console! <<\n");
+
+    // ilhanan rani nga na push jd
     return 0;
 }
