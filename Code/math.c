@@ -271,11 +271,11 @@ int main()
                 int n = 0;
                 int r = 0;
                 int identicalObjects[50];
-                int fnProduct = 0;
-                int frProduct = 0;
+                long long int fnProduct = 0;
+                long long int frProduct = 0;
                 int l1 = 0, l2 = 0, l3 = 0, l4 = 0;
-                long int pResult = 0;
-                int SOAIO = 0;
+                long long int pResult = 0;
+                long long int SOAIO = 0;
                 char option = 'y';
 
                 if (userChoice == 1)
@@ -310,7 +310,7 @@ int main()
                             pResult = fnProduct/frProduct;
                         }
                 
-                        printf("\nResult:%d, n = %d, r = %d",pResult,fnProduct,frProduct);
+                        printf("\nResult:%lld, n = %lld, r = %lld",pResult,fnProduct,frProduct);
                         printf("\nPress any key to continue...");
                         getch();
                     }
@@ -329,7 +329,7 @@ int main()
                         {
                             pResult *= n;
                         }
-                        printf("\nResult:%d",pResult);
+                        printf("\nResult:%lld",pResult);
                         printf("\nPress any key to continue...");
                         getch();
                     }
@@ -379,7 +379,7 @@ int main()
                             frProduct = frProduct * identicalObjects[l3+1];
                         }
                         pResult = fnProduct/frProduct;
-                        printf("\nResult:%d",pResult);
+                        printf("\nResult:%lld",pResult);
                         printf("\nPress any key to continue...");
                         getch();
                     }
@@ -387,7 +387,7 @@ int main()
                 }else if (userChoice == 4)
                 {
                     break;
-                } else {printf("Invalid input!");}
+                } else {printf("Invalid input!"); printf("\nPress any key to continue..."); getch();}
             }
         }else if (choice == 5)
         {
