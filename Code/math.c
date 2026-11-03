@@ -104,8 +104,6 @@ int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],ch
 }
 int main()
 {
-    char tryAgain;
-
     do
     {
 
@@ -210,7 +208,7 @@ int main()
         } else if (choice == 2)
         {
             printf(">> Fibonacci Sequence <<");
-            int n, m, l, nextTerm = 0, counter = 0;
+            long long int n, m, nextTerm = 0, counter = 0;
             printf("\nEnter the number of terms: ");
             scanf("%d", &m);
             printf("\nEnter the first term: ");
@@ -220,7 +218,7 @@ int main()
                 nextTerm = nextTerm + n;
                 n = nextTerm - n;
                 counter++;
-                printf("%d ", nextTerm);
+                printf("%lld ", nextTerm);
             }
         } else if (choice == 3)
         {
@@ -235,7 +233,7 @@ int main()
                 fact = fact * i;
             }
             
-            printf("Factorial of %d is %ld\n", n, fact);          
+            printf("Factorial of %d is %lld\n", n, fact);          
         } else if (choice == 4)
         {
             system("cls");
@@ -292,11 +290,11 @@ int main()
         
         // TRY AGAIN QUESTION
 
-        printf("\n\nDo you want to return to the MENU? (Y/N): ");
-        scanf(" %c", &tryAgain);
+        printf("\n\nPress any key to return to main menu..");
+        getch();
         printf("\n");
 
-    } while (tryAgain == 'y' || tryAgain == 'Y');
+    } while (1);
 
     printf(">> Thank you for using our console! <<\n");
 
