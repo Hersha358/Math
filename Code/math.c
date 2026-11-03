@@ -268,11 +268,7 @@ int main()
                 frProduct = n - r;
                 for ( l1 = n; l1 > frProduct; l1--)
                 {
-                    if (l1 == frProduct)
-                    {
-                        printf("Reached: %lld/%lld",l1,frProduct);
-                        break;
-                    }
+                    
                     if (fnProduct > MAX_LIMIT / l1)
                     {
                         printf("\nOverflow detected! Innacurate results may yield.");
@@ -280,12 +276,7 @@ int main()
                         fnProduct = fnProduct * l1;
                     }
                 }
-                if (frProduct == 0)
-                {
-                    pResult = fnProduct;
-                }else{
-                    pResult = fnProduct;
-                }
+            pResult = fnProduct;
             printf("\nP(%d,%d) = %lld",n,r,pResult);
             }
         }else if (choice == 5)
