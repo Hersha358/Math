@@ -104,7 +104,7 @@ int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],ch
 }
 int main()
 {
-    do
+    while (1)
     {
 
         int choice = showmenu("","Central Tendencies","Fibonacci Sequence","Factorial","Permutations","Exit");
@@ -208,32 +208,40 @@ int main()
         } else if (choice == 2)
         {
             printf(">> Fibonacci Sequence <<");
-            long long int n, m, nextTerm = 0, counter = 0;
+            int counter = 0;
+            long long int n = 0, m = 0, nextTerm = 0;
             printf("\nEnter the number of terms: ");
             scanf("%d", &m);
             printf("\nEnter the first term: ");
             scanf("%d", &n);
-
+            
             while (counter < m) {
                 nextTerm = nextTerm + n;
                 n = nextTerm - n;
                 counter++;
                 printf("%lld ", nextTerm);
             }
+            
+
         } else if (choice == 3)
         {
-            int n, i;
+            int n = 0, i = 0;
             long long fact = 1;
             
             printf("Welcome to the Factorial Calculator!\n");
             printf("Enter a number:");
             scanf("%d", &n);
 
-            for(i = 1; i <= n; i++) {
-                fact = fact * i;
+            if (n <= 0)
+            {
+                printf("n cannot be <= 0");
+            }else{
+                for(i = 1; i <= n; i++) {
+                    fact = fact * i;
+                }
+                printf("Factorial of %d is %lld\n", n, fact);
             }
-            
-            printf("Factorial of %d is %lld\n", n, fact);          
+       
         } else if (choice == 4)
         {
             system("cls");
@@ -254,7 +262,7 @@ int main()
 
             if (r > n || r <= 0 || n <= 0)
             {
-                printf("Invalid syntax!");
+                printf("please enter n >= r >= 0");
             }else {
                 fnProduct = 1;
                 frProduct = n - r;
@@ -269,19 +277,16 @@ int main()
                     {
                         printf("\nOverflow detected! Innacurate results may yield.");
                     }else{
-                        printf("\nSTATE: %lld * %lld",fnProduct,l1);
                         fnProduct = fnProduct * l1;
                     }
                 }
-
                 if (frProduct == 0)
                 {
                     pResult = fnProduct;
                 }else{
                     pResult = fnProduct;
                 }
-            printf("\nResult:%lld, n = %lld, r = %lld",pResult,n,r);
-
+            printf("\nP(%d,%d) = %lld",n,r,pResult);
             }
         }else if (choice == 5)
         {
@@ -293,11 +298,9 @@ int main()
         printf("\n\nPress any key to return to main menu..");
         getch();
         printf("\n");
-
-    } while (1);
+    }
 
     printf(">> Thank you for using our console! <<\n");
-
     // ilhanan rani nga na push jd
     return 0;
 }
