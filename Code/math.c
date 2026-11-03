@@ -1,402 +1,107 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
 
-void arrowhere(int option, int current)
-{
-    if (option == current)
-    {
-        printf("-> ");
-    }else{
-        printf("   ");
-    }
-}
+#define MAX_LIMIT 9223372036854775807LL
 
-void highlight(int opt, int curr)
-{
-    HANDLE Console = GetStdHandle(STD_OUTPUT_HANDLE);
-    
-    if (opt == curr)
-    {
-        SetConsoleTextAttribute(Console,
-        BACKGROUND_BLUE | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_INTENSITY);
-    }else
-    {
-        SetConsoleTextAttribute(Console,7);
-    }
-}
-
-
-int showmenu(char menuTitle[],char opt1[],char opt2[],char opt3[],char opt4[],char opt5[])
-{
-    int key = 0;
-    int position = 1;
-
-    if (menuTitle == "")
-    {
-        menuTitle = "Main Menu";
-    }
-    if (opt1 == "")
-    {
-        opt1 = "Option 1";
-    }
-    
-    if (opt2 == "")
-    {
-        opt2 = "Option 1";
-    }
-    
-    if (opt3 == "")
-    {
-        opt3 = "Option 3";
-    }
-    if (opt4 == "")
-    {
-        opt4 = "Option 4";
-    }
-    if (opt5 == "")
-    {
-        opt5 = "Option 5";
-    }
-    printf("%s\n%s\n%s\n%s\n%s\n",menuTitle,opt1,opt2,opt3,opt4,opt5);
-
-    while(key != 13) 
-{
-    system("cls");
-    printf("\n\n\n");
-
-    if (opt1 != "Option 1" && opt2 != "Option 2" && opt3 != "Option 3" && opt4 != "Option 4" && opt5 != "Option 5")
-    {
-        printf("======== %s ========\n\n",menuTitle);
-        highlight(1,position); arrowhere(1, position); printf("%s\n",opt1);
-        highlight(2,position); arrowhere(2, position);  printf("%s\n",opt2);
-        highlight(3,position); arrowhere(3, position);  printf("%s\n",opt3);
-        highlight(4,position); arrowhere(4, position);  printf("%s\n",opt4);
-        highlight(5,position); arrowhere(5, position);  printf("%s\n\n",opt5);
-        highlight(6,position);
-        key = getch();
-
-    if (key == 224 || key == 0) { 
-        switch (getch()) { 
-            case 72: 
-                position--;
-                if (position < 1) {
-                    position = 1;
-                }
-                break;
-            case 80: 
-                position++;
-                if (position > 5) {
-                    position = 5;
-                }
-                break;
-        }
-    }
-    }else if (opt1 != "Option 1" && opt2 != "Option 2" && opt3 != "Option 3" && opt4 != "Option 4" && opt5 == "Option 5"){
-        printf("======== %s ========\n\n",menuTitle);
-        highlight(1,position); arrowhere(1, position); printf("%s\n",opt1);
-        highlight(2,position); arrowhere(2, position);  printf("%s\n",opt2);
-        highlight(3,position); arrowhere(3, position);  printf("%s\n",opt3);
-        highlight(4,position); arrowhere(4, position);  printf("%s\n\n",opt4);
-        highlight(6,position);
-        key = getch();
-
-        if (key == 224 || key == 0) { 
-            switch (getch()) { 
-                case 72: 
-                    position--;
-                    if (position < 1) {
-                        position = 1;
-                    }
-                    break;
-                case 80: 
-                    position++;
-                    if (position > 4) {
-                        position = 4;
-                    }
-                    break;
-            }
-    }
-    }
-}
-    return position;
-}
-int main()
-{
+int main() {
     char tryAgain;
-
     do
     {
-
-        int choice = showmenu("","Central Tendencies","Fibonacci Sequence","Factorial","Permutations","Exit");
-
         system("cls");
+
+        int choice, i, j;
+
+        printf(">>>>>>> Math Menu <<<<<<<\n\n");
+        printf("1) Mean, Median, Mode\n");
+        printf("2) Nalimot ko unsa ni\n");
+        printf("3) Factorial\n");
+        printf("4) Permutation\n");
+        printf("5) Exit\n\n");
+
+        printf("Choose a number: ");
+        scanf("%d", &choice);
         
         // MEAN, MEDIAN, MODE
         if (choice == 1) 
         {
-            printf("\n>>> MEASURES OF CENTRAL TENDENCY <<<\n");
-            printf("       (Mean, Median, Mode)    \n\n");
+            printf(">> MEAN, MEDIAN, MODE <<");
+            
+        }
+        
+        // PROBLEM 2
+        if (choice == 2)
+        {
+            printf(">> PROBLEM 2 <<");
+            
+        }
+        
+        // FACTORIAL
+        if (choice == 3)
+        {
+            printf(">> FACTORIAL <<");
+                      
+        }
+        
+        // PERMUTATION
+        if (choice == 4)
+        {
+            int n = 0;
+            int r = 0;
+            long long int fnProduct = 0;
+            long long int frProduct = 0;
+            long long int l1 = 0;
+            long long int pResult = 0;
 
-            int n, sum, i, temp, median, mode, max_count, count;
-            float mean;
-            int numbers[50];
+            printf("\n===========================");
+            printf("\nWelcome to permutation!");
+            printf("\n===========================");
+            printf("\nEnter total number of objects(n):");
+            scanf("%d",&n);
+            printf("Enter number of objects to be arranged(r):");
+            scanf("%d",&r);
 
-            do
+            if (r > n || r <= 0 || n <= 0)
             {
-                printf("|| Enter how many numbers you want (10 to 50): ");
-                scanf("%d", &n);
+                printf("Invalid syntax!");
+            }else {
 
-            } while (n < 10 || n > 50);
-
-            printf("\n");
-            printf("|| Please enter %d numbers: ", n);
-            printf("\n");
-
-            // MEAN & TOTAL
-
-            for (i = 0; i < n; i++)
-            {
-                printf("\n");
-                printf("> Number %d: ", i + 1);
-                scanf("%d", &numbers[i]);
-            }
-
-            for (i = 0; i < n; i++)
-            {
-                sum += numbers[i];
-            }
-
-            mean = (float)sum / n;
-
-            printf("\n\n------- RESULTS -------\n");
-            printf("\n> Total = %d\n", sum);
-            printf("\n> Mean (Average): %.2f\n", mean);
-
-            // MEDIAN
-
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - 1; j++)
+                fnProduct = 1;
+                frProduct = n - r;
+                for ( l1 = n; l1 > frProduct; l1--)
                 {
-                    if (numbers[j] > numbers[j + 1])
+                    if (l1 == frProduct)
                     {
-                        temp = numbers[j];
-                        numbers[j] = numbers[j + 1];
-                        numbers[j + 1] = temp;
+                        printf("Reached: %lld/%lld",l1,frProduct);
+                        break;
                     }
-                }
-            }
-            if (n % 2 == 0)
-            {
-                median = (int)(numbers[n / 2] + numbers[(n / 2) - 1]) / 2;
-                printf("\n> Median (Middle): %d\n", median);
-            }
-            else
-            {
-                median = (int)numbers[n / 2];
-                printf("\n> Median (Middle): %d\n", median);
-            }
-
-            // MODE
-
-            mode = numbers[0];
-
-            for (int i = 0; i < n; i++)
-            {
-                int count = 1;
-                while (i + 1 < n && numbers[i] == numbers[i + 1])
-                {
-                    count++;
-                    i++;
-                }
-                if (count > max_count)
-                {
-                    max_count = count;
-                    mode = numbers[i];
-                }
-            }
-
-            if (max_count > 1)
-            {
-                printf("\n> Mode (Most Common): %d\n", mode, max_count);
-            }
-            else
-            {
-                printf("\n> Mode (Most Common): No mode\n");
-            }
-            
-        } else if (choice == 2)
-        {
-            printf(">> Fibonacci Sequence <<");
-            int n, m, l, nextTerm = 0, counter = 0;
-            printf("\nEnter the number of terms: ");
-            scanf("%d", &m);
-            printf("\nEnter the number: ");
-            scanf("%d", &n);
-
-            while (counter < m) {
-                nextTerm = nextTerm + n;
-                n = nextTerm - n;
-                counter++;
-                printf("%d ", nextTerm);
-            }
-        } else if (choice == 3)
-        {
-            int n, i;
-            long fact = 1;
-            
-            printf("Welcome to the Factorial Calculator!\n");
-            printf("Enter a number:");
-            scanf("%d", &n);
-
-            for(i = 1; i <= n; i++) {
-                fact = fact * i;
-            }
-            
-            printf("Factorial of %d is %ld\n", n, fact);          
-        } else if (choice == 4)
-        {
-            system("cls");
-            while (1)
-            {
-                int userChoice = showmenu(
-                "Permutations",
-                "Standard Permutation P(n,r)",
-                "Permutation with repetition allowed (n^r)",
-                "Permutation with identical objects (n!/a!b!c!..)",
-                "Exit",
-                "");
-                int n = 0;
-                int r = 0;
-                int identicalObjects[50];
-                long long int fnProduct = 0;
-                long long int frProduct = 0;
-                int l1 = 0, l2 = 0, l3 = 0, l4 = 0;
-                long long int pResult = 0;
-                long long int SOAIO = 0;
-                char option = 'y';
-
-                if (userChoice == 1)
-                {
-                    printf("Enter total number of objects(n):");
-                    scanf("%d",&n);
-                    printf("Enter number of objects to be arranged(r):");
-                    scanf("%d",&r);
-
-                    if (r > n || r <= 0 || n <= 0)
+                    if (fnProduct > MAX_LIMIT / l1)
                     {
-                        printf("Invalid syntax!");
-                    }else {
-
-                        fnProduct = n;
-                        for ( l1 = n - 1; l1 > 1; l1--)
-                        {
-                            fnProduct = fnProduct * l1;
-                        }
-
-                        frProduct = n - r;
-                        
-                        for ( l2 = frProduct - 1; l2 > 1; l2--)
-                        {
-                            frProduct = frProduct * l2;
-                        }
-
-                        if (frProduct == 0)
-                        {
-                            pResult = fnProduct;
-                        }else{
-                            pResult = fnProduct/frProduct;
-                        }
-                
-                        printf("\nResult:%lld, n = %lld, r = %lld",pResult,fnProduct,frProduct);
-                        printf("\nPress any key to continue...");
-                        getch();
-                    }
-                }else if (userChoice == 2){
-                    printf("Enter the total number of available objects(n):");
-                    scanf("%d",&n);
-                    printf("Enter the number of positions to fill(r):");
-                    scanf("%d",&r);
-
-                    if (n <= 0 || r <= 0)
-                    {
-                        printf("Invalid syntax!");
+                        printf("\nOverflow detected! Innacurate results may yield.");
                     }else{
-                        pResult = n;
-                        for ( l1 = 1; l1 < r; l1++)
-                        {
-                            pResult *= n;
-                        }
-                        printf("\nResult:%lld",pResult);
-                        printf("\nPress any key to continue...");
-                        getch();
+                        printf("\nSTATE: %lld * %lld",fnProduct,l1);
+                        fnProduct = fnProduct * l1;
                     }
-                    
+                }
 
-                }else if (userChoice == 3){
-                    printf("Enter total number of objects(n):");
-                    scanf("%d",&n);
-
-
-                    fnProduct = n;
-                    for ( l4 = n - 1; l4 > 1; l4--)
-                        {
-                            fnProduct = fnProduct * l4;
-                        }
-
-                    do
-                    {
-                        printf("Enter number of repeats:");
-                        scanf("%d",&identicalObjects[r]);
-                        r += 1;
-                        printf("continue?(y/n):");
-                        scanf(" %c",&option);
-                        
-                    } while (option != 'n' && option != 'N');
-                    
-                    for ( l1 = 0; l1 < r; l1++)
-                    {
-                        frProduct = identicalObjects[l1];
-                        for (l2 = identicalObjects[l1] - 1; l2 > 1; l2--)
-                        {
-                            
-                            frProduct = frProduct * l2;
-                        }
-                        SOAIO = SOAIO + identicalObjects[l1];
-                        identicalObjects[l1] = frProduct;
-                    }
-
-                    if (SOAIO != n)
-                    {
-                        printf("Invalid syntax identical objects must be equal to n (a + b + c.. = n)");
-                    }else{
-
-                        frProduct = identicalObjects[0];
-                        for ( l3 = 0; l3 < l1-1; l3++)
-                        {
-                            frProduct = frProduct * identicalObjects[l3+1];
-                        }
-                        pResult = fnProduct/frProduct;
-                        printf("\nResult:%lld",pResult);
-                        printf("\nPress any key to continue...");
-                        getch();
-                    }
-                    
-                }else if (userChoice == 4)
+                if (frProduct == 0)
                 {
-                    break;
-                } else {printf("Invalid input!"); printf("\nPress any key to continue..."); getch();}
+                    pResult = fnProduct;
+                }else{
+                    pResult = fnProduct;
+                }
+            printf("\nResult:%lld, n = %lld, r = %lld",pResult,n,r);
             }
-        }else if (choice == 5)
+        }
+        
+        if (choice == 5)
         {
             break;
         }
         
         // TRY AGAIN QUESTION
 
-        printf("Do you want to return to the MENU? (Y/N): ");
+        printf("\n\nDo you want to return to the MENU? (Y/N): ");
         scanf(" %c", &tryAgain);
         printf("\n");
 
@@ -404,4 +109,5 @@ int main()
 
     printf(">> Thank you for using our console! <<\n");
     return 0;
+    
 }
