@@ -88,6 +88,11 @@ This project was developed to practice fundamental C programming concepts, inclu
 - Basic overflow checking.
 - Console-based user interface development.
 
+## Additional Resources
+
+- **Presentation (Canva):** [View Presentation](https://canva.link/programming-report)
+- **Program Flowchart (draw.io):** [View Flowchart](https://drive.google.com/file/d/1SZGjluCgPRhUqqhXqAW0M-VFn0n1Qs7L/view?usp=sharing)
+
 ---
 
 **Note:** This application is designed for Windows because it uses Windows-specific console functionality through `windows.h` and `conio.h`.
